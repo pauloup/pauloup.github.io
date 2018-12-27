@@ -1,0 +1,303 @@
+html {
+    background: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 480px;
+}
+
+#app {
+    width: 720px;
+    height: 480px;
+    min-width: 720px;
+    min-height: 480px;
+    position: relative;
+    background: #f2f2f2;
+    border: 1px solid #999;
+    margin: 0 auto;
+    color: #1a1a1a;
+    font: 12pt 'Lato', sans-serif;
+    resize: both;
+    overflow: hidden;
+}
+
+.app-margin {
+    right: 80px;
+    left: 80px;
+}
+
+header {
+    position: absolute;
+    top: 40px;
+    height: 40px;
+}
+
+h1 {
+    margin: 10px 0 0;
+    font-size: 20pt;
+    font-weight: bold;
+    display: inline-block
+}
+
+h2 {
+    margin: 0 0 10px 0;
+    font-size: 14pt;
+}
+
+p {
+    margin: 10px 0;
+    font-weight: 300;
+}
+
+header p {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+main {
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    width: 100%;
+}
+
+.app-split .left {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    left: 0;
+    bottom: 0;
+}
+
+.app-split .right {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+}
+
+.view {
+    position: absolute;
+}
+
+.view.home {
+    top: 80px;
+    height: 90px;
+}
+
+.view.home p {
+    display: block;
+    margin: 10px 0 0 0;
+}
+
+.view.home .right {
+    padding-left: 40px;
+}
+
+.view.done {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    border-bottom: 1px   solid #ccc;
+    border-top: 1px   solid #ccc;
+}
+
+.view.done .right {
+    border-left: 1px solid #ccc;
+}
+
+.tree {
+    padding: 15px 20px;
+    line-height: 1.8em;
+    overflow-y: auto;
+}
+
+.tree span {
+    display: block;
+    margin-left: 20px;
+}
+
+.tree .folder {
+    margin-left: 0px;
+}
+
+.tree .folder::before {
+    content: "⯆";
+    font-size: 1em;
+    padding-right: 8px;
+    margin-bottom: -10px;
+    display: inline-block;
+}
+
+.tree .indent {
+    margin-left: 15px;
+}
+
+.tree .inactive {
+    color: #808080;
+    font-style: italic;
+}
+
+.tree .new {
+    font-weight: bold;
+}
+
+.view.date {
+    top: 30px;
+}
+.view.action {
+    top: 30px;
+}
+
+nav {
+    height: 40px;
+    position: absolute;
+    bottom: 40px;
+}
+
+nav .right {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+nav .left .button {
+    margin-right: 20px;
+}
+
+.button {
+    display: inline-block;
+    background: #f9f9f9;
+    border: 1px solid #999 ;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 10px 15px 10px;
+    line-height: 20px;
+    box-shadow: 0 2px rgba(0,0,0,0.1);
+    color: #1a1a1a;
+    text-align: center;
+    min-width: 80px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.button:not([disabled]):hover {
+    box-shadow: 0 1px 0 1px rgba(0,0,0,0.25);
+}
+
+.button:focus {
+    outline: 2px solid #4792F4;
+}
+
+.button:active {
+    outline: none;
+}
+
+.button.active .label.active {
+    display: inline-block;
+}
+
+.button-arrow::before {
+    content: "⯆";
+    font-size: 1em;
+    padding-right: 12px;
+}
+
+.button-file {
+    background: #fff;
+    text-align: left;
+}
+
+.button-file::after {
+    content: "⯆";
+    font-size: 16px;
+    padding: 10px 0 8px 12px;
+    margin-left: 10px;
+    border-left: 1px solid #f2f2f2;
+}
+
+.button-file .label {
+    display: inline-block;
+    width: 170px;
+}
+
+.button-file .label.empty {
+    font-style: italic;
+    color: #b3b3b3;
+}
+
+.button-text {
+    background: white;
+    border-color: white;
+    text-align: left
+}
+
+.button-text::placeholder {
+    font-style: italic;
+}
+
+.options p {
+    margin-top: 20px;
+    line-height: 1.8em; 
+}
+
+.options input[type=radio],
+.options input[type=checkbox] {
+    margin-right: 5px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.options input:checked + label {
+    font-weight: bold;
+}
+
+.options label,
+.options strong {
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+#data_regex:not(:checked) +  label + #data_regex_text{
+    opacity: 0.5;
+}
+
+.button.highlight {
+    background: #1a1a1a;
+    color: white;
+    font-weight: bold;
+    border-color: #1a1a1a;
+}
+
+.button.disabled  {
+    opacity: 0.5;
+    cursor: default;
+}
+
+#app[data-view=date] .button-date,
+#app[data-view=action] .button-action {
+    background: #dbdbdb;
+    border-color: b3b3b3;
+}
+
+#app[data-view=home] .view-home-hide,
+#app[data-view=date] .view-date-hide,
+#app[data-view=action] .view-action-hide,
+#app[data-view=done] .view-done-hide,
+#app[data-action=copy] .action-copy-hide,
+#app[data-action=move] .action-move-hide,
+#app[data-action=link] .action-link-hide,
+#app[data-input=true] .input-true-hide,
+#app[data-input=false] .input-false-hide,
+#app[data-output=true] .output-true-hide,
+#app[data-output=false] .output-false-hide,
+#app[data-input=true][data-output=true] .inputoutput-true-hide
+ {
+    display: none
+}
