@@ -19,9 +19,49 @@
 
 <body>
     
-    <div id="app" class="js-target" data-view="home" data-action="copy" data-input="false" data-output="false">
-	<div class="js-allowed" data-view="home;date;action;done" data-action="copy;move;link" data-input="false;true" data-output="false;true"></div>
-	<div class="js-defaults" data-view="home" data-action="copy" data-input="false" data-output="false"></div>
+    <div id="phockup" class="js-target"
+	data-input=""
+	data-output=""
+	data-date=""
+	data-move="false"
+	data-link="false"
+	data-original_names="false"
+	data-regex=""
+	data-timestamp="false"
+	data-date_fields="" >
+	
+	<div class="js-allowed"
+	    data-input="*"
+	    data-output="*"
+	    data-date="*"
+	    data-move="false;true"
+	    data-link="false;true"
+	    data-original_names="false;true"
+	    data-regex="*"
+	    data-timestamp="false;true"
+	    data-date_fields="*" >
+	</div>
+	
+	<div class="js-defaults"
+	    data-input=""
+	    data-output=""
+	    data-date=""
+	    data-move="false"
+	    data-link="false"
+	    data-original_names="false"
+	    data-regex=""
+	    data-timestamp="false"
+	    data-date_fields="" >
+	</div>
+	
+	<div class="output">$</div>
+    </div>
+    
+    <div id="app" class="app js-target" data-view="home">
+	
+	<div class="js-allowed" data-view="home;date;action;done"></div>
+	
+	<div class="js-defaults" data-view="home"></div>
 	
 	<header class="app-margin">
 	    <h1>Phockup</h1>
@@ -33,7 +73,7 @@
 		<div class="left">
 		    <h2>Input</h2>
 		    <button class="button button-file js-actor"
-			data-target="app" data-data="input" data-value="true" data-back="false">
+			data-target="phockup" data-key="input" data-value="Photos" data-back="">
 			<span class="label empty input-true-hide">No folder selected</span>
 			<span class="label input-false-hide">Photos</span>
 		    </button>
@@ -43,7 +83,7 @@
 		<div class="right">
 		    <h2>Output</h2>
 		    <button class="button button-file js-actor"
-			data-target="app" data-data="output" data-value="true" data-back="false">
+			data-target="phockup" data-key="output" data-value="Backup" data-back="">
 			<span class="label empty output-true-hide">No folder selected</span>
 			<span class="label output-false-hide">Backup</span>
 		    </button>
@@ -90,20 +130,19 @@
 		<h2>Where to get date from?</h2>
 		
 		<p>
-		    <strong>EXIF</strong>
-		    <input class="button button-text" placeholder="Default fields"/>
+		    <label for="date_fields">EXIF</label>
+		    <input class="button button-text js-input js-ui" data-target="phockup" data-key="date_fields" data-ui="input" placeholder="Default fields" id="date_fields"/>
 		</p>
 		
 		<p>If there is no EXIF date information:</p>
 		
 		<p>
-		    <input type="checkbox" id="data_regex">
-		    <label for="data_regex">Filename</label>
-		    <input class="button button-text" placeholder="Regex expression" id="data_regex_text"/>
+		    <label for="regex">Filename</label>
+		    <input class="button button-text js-input js-ui" data-target="phockup" data-key="regex" data-ui="input" placeholder="Regex expression" id="regex"/>
 		</p>
 		
 		<p>
-		    <input type="checkbox" id="timestamp">
+		    <input type="checkbox" id="timestamp" class="js-actor js-ui" data-target="phockup" data-key="timestamp" data-value="true" data-back="false" data-ui="checked">
 		    <label for="timestamp">Timestamp</label>
 		    <span>Use file modification date</span>
 		</p>
@@ -113,35 +152,42 @@
 		<h2>What to do with files?</h2>
 	    
 		<p>
-		    <span class="js-actor" data-target="app" data-data="action" data-value="copy">
-			<input type="radio" name="action" id="action_copy" checked>
-			<label for="action_copy">Copy</label>
+		    <span class="js-actor" data-target="phockup" data-key="move" data-value="false">
+			<span class="js-actor" data-target="phockup" data-key="link" data-value="false">
+			    <input type="radio" name="action" id="action_copy">
+			    <label for="action_copy">Copy</label>
+			</span>
 		    </span>
 		    <br/>
 		    
-		    <span class="js-actor" data-target="app" data-data="action" data-value="move">
-			<input type="radio" name="action" id="action_move">
-			<label for="action_move">Move</label>
+		    <span class="js-actor" data-target="phockup" data-key="move" data-value="true">
+			<span class="js-actor" data-target="phockup" data-key="link" data-value="false">
+			    <input type="radio" name="action" id="action_move">
+			    <label for="action_move">Move</label>
+			</span>
 		    </span>
 		    <span>...from input to output</span>
 		    <br/>
 		    
-		    
-		    <span class="js-actor" data-target="app" data-data="action" data-value="link">
-			<input type="radio" name="action" id="action_link">
-			<label for="action_link">Link</label>
+		    <span class="js-actor" data-target="phockup" data-key="link" data-value="true">
+			<span class="js-actor" data-target="phockup" data-key="move" data-value="false">
+			    <input type="radio" name="action" id="action_link">
+			    <label for="action_link">Link</label>
+			</span>
 		    </span>
 		    <br/>
 		</p>
 		
 		<p>
-		    <strong>Create directories</strong>
-		    <input class="button button-text" placeholder="YYYY/MM/DD"/>
+		    <label for="date">Create directories</label>
+		    <input class="button button-text js-input js-ui" data-target="phockup" data-key="date" data-ui="input" placeholder="YYYY/MM/DD" id="date"/>
 		</p>
 		
 		<p>
-		    <input type="checkbox" id="original_names">
-		    <label for="original_names">Original names</label>
+		    <span>
+			<input type="checkbox" id="original_names" class="js-actor js-ui" data-target="phockup" data-key="original_names" data-value="true" data-back="false" data-ui="checked">
+			<label for="original_names">Original names</label>
+		    </span>
 		    <span>Don't rename files</span>
 		</p>
 	    </div>
@@ -151,19 +197,19 @@
 	    <div class="left">
 		<div class="view-done-hide">
 		    <button class="button button-arrow button-date js-actor" 
-		        data-target="app" data-data="view" data-value="date" data-back="home">Date</button>
+		        data-target="app" data-key="view" data-value="date" data-back="home">Date</button>
 		    <button class="button button-arrow button-action js-actor"
-		        data-target="app" data-data="view" data-value="action" data-back="home">
-			<span class="label action-move-hide action-link-hide">Copy</span>
-			<span class="label action-copy-hide action-link-hide">Move</span>
-			<span class="label action-move-hide action-copy-hide">Link</span>
+		        data-target="app" data-key="view" data-value="action" data-back="home">
+			<span class="label copy-false-hide">Copy</span>
+			<span class="label move-false-hide">Move</span>
+			<span class="label link-false-hide">Link</span>
 		    </button>
 		</div>
 		<div class="view-home-hide view-date-hide view-action-hide">
 		    <p><strong>Finished:</strong> 3
-		    <span class="action-move-hide action-link-hide">copied</span>
-		    <span class="action-copy-hide action-link-hide">moved</span>
-		    <span class="action-move-hide action-copy-hide">linked</span>
+		    <span class="copy-false-hide">copied</span>
+		    <span class="move-false-hide">moved</span>
+		    <span class="link-false-hide">linked</span>
 		    files and 1 ignored</p>
 		</div>
 	    </div>
@@ -172,15 +218,16 @@
 		    <span class="label normal">Start</span>
 		</button>
 		<button class="button highlight view-done-hide js-actor input-false-hide output-false-hide" id="bt_start_on"
-		    data-target="app" data-data="view" data-value="done">
+		    data-target="app" data-key="view" data-value="done">
 		    <span class="label normal">Start</span>
 		</button>
 		<button class="button view-home-hide view-date-hide view-action-hide js-actor"
-		    data-target="app" data-data="view" data-value="home">
+		    data-target="app" data-key="view" data-value="home">
 		    <span class="label done">Done</span>
 		</button>
 	    </div>
 	</nav>
-    </div>
+    </div
+    
 </body>
 </html>

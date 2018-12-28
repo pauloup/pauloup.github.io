@@ -1,3 +1,8 @@
+label {
+    display: inline-block;
+    margin-top: -5px;
+}
+
 html {
     background: white;
     height: 100%;
@@ -7,19 +12,23 @@ html {
     min-height: 480px;
 }
 
-#app {
+.app {
     width: 720px;
     height: 480px;
     min-width: 720px;
     min-height: 480px;
     position: relative;
     background: #f2f2f2;
-    border: 1px solid #999;
+    outline: 1px solid #999;
     margin: 0 auto;
     color: #1a1a1a;
     font: 12pt 'Lato', sans-serif;
     resize: both;
     overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .app-margin {
@@ -102,12 +111,12 @@ main {
     left: 0;
     bottom: 0;
     background: #fff;
-    border-bottom: 1px   solid #ccc;
-    border-top: 1px   solid #ccc;
+    box-shadow: 0 1px rgba(0,0,0,0.1),
+		0 -1px rgba(0,0,0,0.1);
 }
 
 .view.done .right {
-    border-left: 1px solid #ccc;
+    box-shadow: -1px 0 rgba(0,0,0,0.1);
 }
 
 .tree {
@@ -172,23 +181,21 @@ nav .left .button {
 .button {
     display: inline-block;
     background: #f9f9f9;
-    border: 1px solid #999 ;
+    border: none;
     border-radius: 3px;
     text-decoration: none;
     padding: 10px 15px 10px;
     line-height: 20px;
-    box-shadow: 0 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25),
+		0 2px rgba(0,0,0,0.1);
     color: #1a1a1a;
     text-align: center;
     min-width: 80px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 .button:not([disabled]):hover {
-    box-shadow: 0 1px 0 1px rgba(0,0,0,0.25);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25),
+		0 1px 0 1px rgba(0,0,0,0.25);
 }
 
 .button:focus {
@@ -234,8 +241,16 @@ nav .left .button {
 
 .button-text {
     background: white;
-    border-color: white;
-    text-align: left
+    text-align: left;
+    box-shadow: 0 2px rgba(0,0,0,0.1);
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.button-text:not([disabled]):hover {
+    box-shadow: 0 2px rgba(0,0,0,0.25);
 }
 
 .button-text::placeholder {
@@ -244,7 +259,7 @@ nav .left .button {
 
 .options p {
     margin-top: 20px;
-    line-height: 1.8em; 
+    line-height: 30px; 
 }
 
 .options input[type=radio],
@@ -264,15 +279,11 @@ nav .left .button {
     margin-right: 15px;
 }
 
-#data_regex:not(:checked) +  label + #data_regex_text{
-    opacity: 0.5;
-}
-
 .button.highlight {
     background: #1a1a1a;
     color: white;
     font-weight: bold;
-    border-color: #1a1a1a;
+    outline-color: #1a1a1a;
 }
 
 .button.disabled  {
@@ -283,21 +294,45 @@ nav .left .button {
 #app[data-view=date] .button-date,
 #app[data-view=action] .button-action {
     background: #dbdbdb;
-    border-color: b3b3b3;
+    outline-color: b3b3b3;
 }
 
 #app[data-view=home] .view-home-hide,
 #app[data-view=date] .view-date-hide,
 #app[data-view=action] .view-action-hide,
 #app[data-view=done] .view-done-hide,
-#app[data-action=copy] .action-copy-hide,
-#app[data-action=move] .action-move-hide,
-#app[data-action=link] .action-link-hide,
-#app[data-input=true] .input-true-hide,
-#app[data-input=false] .input-false-hide,
-#app[data-output=true] .output-true-hide,
-#app[data-output=false] .output-false-hide,
-#app[data-input=true][data-output=true] .inputoutput-true-hide
- {
+#phockup[data-link=true] ~ #app .copy-false-hide,
+#phockup[data-move=true] ~ #app .copy-false-hide,
+#phockup[data-move=false] ~ #app .move-false-hide,
+#phockup[data-link=false] ~ #app .link-false-hide,
+#phockup:not([data-input=""]) ~ #app .input-true-hide,
+#phockup[data-input=""] ~ #app .input-false-hide,
+#phockup:not([data-output=""]) ~ #app .output-true-hide,
+#phockup[data-output=""] ~ #app .output-false-hide,
+#phockup:not([data-input=""]):not([data-output=""]) ~ #app .inputoutput-true-hide{
     display: none
+}
+
+#phockup:not([data-date=""]) ~ #app label[for=date],
+#phockup:not([data-regex=""]) ~ #app label[for=regex],
+#phockup:not([data-date_fields=""]) ~ #app label[for=date_fields] {
+    font-weight: bold;
+}
+
+
+#phockup {
+    font-size: 16px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 10px;
+    background: black;
+    color: white;
+    font-family: monospace;
+    padding: 10px 15px;  
+}
+
+#phockup .output::before {
+    content: "$ "
 }
