@@ -54,172 +54,174 @@
 	<div class="output">$</div>
     </div>
     
-    <div id="app" class="app js-target" data-view="home">
-	
-	<div class="js-allowed" data-view="home;date;action;done"></div>
-	
-	<div class="js-defaults" data-view="home"></div>
-	
-	<header class="app-margin">
-	    <h1>Phockup</h1>
-	    <p>Organize photos and videos by date</p>
-	</header>
-	
-	<main>
-	    <div class="view home app-margin app-split view-date-hide view-action-hide view-done-hide">
-		<div class="left">
-		    <h2>Input</h2>
-		    <button class="button button-file js-actor"
-			data-target="phockup" data-key="input" data-value="Photos" data-back="">
-			<span class="label empty input-true-hide">No folder selected</span>
-			<span class="label input-false-hide">Photos</span>
-		    </button>
-		    <p>Where to look for files</p>
-		</div>
-		
-		<div class="right">
-		    <h2>Output</h2>
-		    <button class="button button-file js-actor"
-			data-target="phockup" data-key="output" data-value="Backup" data-back="">
-			<span class="label empty output-true-hide">No folder selected</span>
-			<span class="label output-false-hide">Backup</span>
-		    </button>
-		    <p>Where to create files</p>
-		</div>
-	    </div>
-	
-	    <div class="view done app-split view-home-hide view-date-hide view-action-hide">
-		<div class="tree left">
-		    <span class="folder">Photos</span>
-		    <div class="indent">
-			<span>IMG_0001.jpg</span>
-			<span>IMG_0002.jpg</span>
-			<span class="inactive">IMG_0002~copy.jpg</span>
-			<span>IMG_0003.jpg</span>
+    <div class="env">
+	<div id="app" class="js-target" data-view="home">
+	    
+	    <div class="js-allowed" data-view="home;date;action;done"></div>
+	    
+	    <div class="js-defaults" data-view="home"></div>
+	    
+	    <header class="app-margin">
+		<h1>Phockup</h1>
+		<p>Organize photos and videos by date</p>
+	    </header>
+	    
+	    <main>
+		<div class="view home app-margin app-split view-date-hide view-action-hide view-done-hide">
+		    <div class="left">
+			<h2>Input</h2>
+			<button class="button button-file js-actor flex-row"
+			    data-target="phockup" data-key="input" data-value="Photos" data-back="">
+			    <span class="label empty input-true-hide">No folder selected</span>
+			    <span class="label input-false-hide">Photos</span>
+			</button>
+			<p>Where to look for files</p>
+		    </div>
+		    
+		    <div class="right">
+			<h2>Output</h2>
+			<button class="button button-file js-actor flex-row"
+			    data-target="phockup" data-key="output" data-value="Backup" data-back="">
+			    <span class="label empty output-true-hide">No folder selected</span>
+			    <span class="label output-false-hide">Backup</span>
+			</button>
+			<p>Where to create files</p>
 		    </div>
 		</div>
-		
-		<div class="tree right">
-		    <span class="folder">Backup</span>
-		    
-		    <div class="indent">
-			<span class="folder new">2018</span>
+	    
+		<div class="view done app-split view-home-hide view-date-hide view-action-hide">
+		    <div class="tree left">
+			<span class="folder">Photos</span>
 			<div class="indent">
-			    <span class="folder new">01</span>
+			    <span>IMG_0001.jpg</span>
+			    <span>IMG_0002.jpg</span>
+			    <span class="inactive">IMG_0002~copy.jpg</span>
+			    <span>IMG_0003.jpg</span>
+			</div>
+		    </div>
+		    
+		    <div class="tree right">
+			<span class="folder">Backup</span>
+			
+			<div class="indent">
+			    <span class="folder new">2018</span>
 			    <div class="indent">
-				<span class="new">IMG_0001.jpg</span>
-			    </div>
-			    <span class="folder new">02</span>
-			    <div class="indent">
-				<span class="new">IMG_0002.jpg</span>
-			    </div>
-			    <span class="folder new">03</span>
-			    <div class="indent">
-				<span class="new">IMG_0003.jpg</span>
+				<span class="folder new">01</span>
+				<div class="indent">
+				    <span class="new">IMG_0001.jpg</span>
+				</div>
+				<span class="folder new">02</span>
+				<div class="indent">
+				    <span class="new">IMG_0002.jpg</span>
+				</div>
+				<span class="folder new">03</span>
+				<div class="indent">
+				    <span class="new">IMG_0003.jpg</span>
+				</div>
 			    </div>
 			</div>
 		    </div>
 		</div>
-	    </div>
-	    
-	    <div class="view date options app-margin view-home-hide view-action-hide view-done-hide">
 		
-		<h2>Where to get date from?</h2>
-		
-		<p>If there is no EXIF date information:</p>
-		
-		<p>
-		    <label for="regex">Filename</label>
-		    <input class="button button-text js-input js-ui" data-target="phockup" data-key="regex" data-ui="input" placeholder="Regex expression" id="regex"/>
-		</p>
-		
-		<p>
-		    <input type="checkbox" id="timestamp" class="js-actor js-ui" data-target="phockup" data-key="timestamp" data-value="true" data-back="false" data-ui="checked">
-		    <label for="timestamp">Timestamp</label>
-		    <span>Use file modification date</span>
-		</p>
-	    </div>
-	    
-	    <div class="view action options app-margin view-home-hide view-date-hide view-done-hide">
-		<h2>What to do with files?</h2>
-	    
-		<p>
-		    <span class="js-actor" data-target="phockup" data-key="move" data-value="false">
-			<span class="js-actor" data-target="phockup" data-key="link" data-value="false">
-			    <input type="radio" name="action" id="action_copy">
-			    <label for="action_copy">Copy</label>
-			</span>
-		    </span>
-		    <br/>
+		<div class="view date options app-margin view-home-hide view-action-hide view-done-hide">
 		    
-		    <span class="js-actor" data-target="phockup" data-key="move" data-value="true">
-			<span class="js-actor" data-target="phockup" data-key="link" data-value="false">
-			    <input type="radio" name="action" id="action_move">
-			    <label for="action_move">Move</label>
-			</span>
-		    </span>
-		    <span>...from input to output</span>
-		    <br/>
+		    <h2>Where to get date from?</h2>
 		    
-		    <span class="js-actor" data-target="phockup" data-key="link" data-value="true">
+		    <p>If there is no EXIF date information:</p>
+		    
+		    <p class="flex-row">
+			<label for="regex">Filename</label>
+			<input class="button button-text js-input js-ui" data-target="phockup" data-key="regex" data-ui="input" placeholder="Regex expression" id="regex"/>
+		    </p>
+		    
+		    <p>
+			<input type="checkbox" id="timestamp" class="js-actor js-ui" data-target="phockup" data-key="timestamp" data-value="true" data-back="false" data-ui="checked">
+			<label for="timestamp">Timestamp</label>
+			<span>Use file modification date</span>
+		    </p>
+		</div>
+		
+		<div class="view action options app-margin view-home-hide view-date-hide view-done-hide">
+		    <h2>What to do with files?</h2>
+		
+		    <p>
 			<span class="js-actor" data-target="phockup" data-key="move" data-value="false">
-			    <input type="radio" name="action" id="action_link">
-			    <label for="action_link">Link</label>
+			    <span class="js-actor" data-target="phockup" data-key="link" data-value="false">
+				<input type="radio" name="action" id="action_copy">
+				<label for="action_copy">Copy</label>
+			    </span>
 			</span>
-		    </span>
-		    <br/>
-		</p>
-		
-		<p>
-		    <label for="date">Create directories</label>
-		    <input class="button button-text js-input js-ui" data-target="phockup" data-key="date" data-ui="input" placeholder="YYYY/MM/DD" id="date"/>
-		</p>
-		
-		<p>
-		    <span>
-			<input type="checkbox" id="original_names" class="js-actor js-ui" data-target="phockup" data-key="original_names" data-value="true" data-back="false" data-ui="checked">
-			<label for="original_names">Original names</label>
-		    </span>
-		    <span>Don't rename files</span>
-		</p>
-	    </div>
-	</main>
-	
-	<nav class="app-margin">
-	    <div class="left">
-		<div class="view-done-hide">
-		    <button class="button button-arrow button-date js-actor" 
-		        data-target="app" data-key="view" data-value="date" data-back="home">Date</button>
-		    <button class="button button-arrow button-action js-actor"
-		        data-target="app" data-key="view" data-value="action" data-back="home">
-			<span class="label copy-false-hide">Copy</span>
-			<span class="label move-false-hide">Move</span>
-			<span class="label link-false-hide">Link</span>
+			<br/>
+			
+			<span class="js-actor" data-target="phockup" data-key="move" data-value="true">
+			    <span class="js-actor" data-target="phockup" data-key="link" data-value="false">
+				<input type="radio" name="action" id="action_move">
+				<label for="action_move">Move</label>
+			    </span>
+			</span>
+			<span>...from input to output</span>
+			<br/>
+			
+			<span class="js-actor" data-target="phockup" data-key="link" data-value="true">
+			    <span class="js-actor" data-target="phockup" data-key="move" data-value="false">
+				<input type="radio" name="action" id="action_link">
+				<label for="action_link">Link</label>
+			    </span>
+			</span>
+			<br/>
+		    </p>
+		    
+		    <p class="flex-row">
+			<label for="date">Create directories</label>
+			<input class="button button-text js-input js-ui" data-target="phockup" data-key="date" data-ui="input" placeholder="YYYY/MM/DD" id="date"/>
+		    </p>
+		    
+		    <p>
+			<span>
+			    <input type="checkbox" id="original_names" class="js-actor js-ui" data-target="phockup" data-key="original_names" data-value="true" data-back="false" data-ui="checked">
+			    <label for="original_names">Original names</label>
+			</span>
+			<span>Don't rename files</span>
+		    </p>
+		</div>
+	    </main>
+	    
+	    <nav class="app-margin">
+		<div class="left">
+		    <div class="view-done-hide">
+			<button class="button button-arrow button-date js-actor" 
+			    data-target="app" data-key="view" data-value="date" data-back="home">Date</button>
+			<button class="button button-arrow button-action js-actor"
+			    data-target="app" data-key="view" data-value="action" data-back="home">
+			    <span class="label copy-false-hide">Copy</span>
+			    <span class="label move-false-hide">Move</span>
+			    <span class="label link-false-hide">Link</span>
+			</button>
+		    </div>
+		    <div class="view-home-hide view-date-hide view-action-hide">
+			<p><strong>Finished:</strong> 3
+			<span class="copy-false-hide">copied</span>
+			<span class="move-false-hide">moved</span>
+			<span class="link-false-hide">linked</span>
+			files and 1 ignored</p>
+		    </div>
+		</div>
+		<div class="right">
+		    <button class="button view-done-hide disabled inputoutput-true-hide" id="bt_start_off" disabled>
+			<span class="label normal">Start</span>
+		    </button>
+		    <button class="button highlight view-done-hide js-actor input-false-hide output-false-hide" id="bt_start_on"
+			data-target="app" data-key="view" data-value="done">
+			<span class="label normal">Start</span>
+		    </button>
+		    <button class="button view-home-hide view-date-hide view-action-hide js-actor"
+			data-target="app" data-key="view" data-value="home">
+			<span class="label done">Done</span>
 		    </button>
 		</div>
-		<div class="view-home-hide view-date-hide view-action-hide">
-		    <p><strong>Finished:</strong> 3
-		    <span class="copy-false-hide">copied</span>
-		    <span class="move-false-hide">moved</span>
-		    <span class="link-false-hide">linked</span>
-		    files and 1 ignored</p>
-		</div>
-	    </div>
-	    <div class="right">
-		<button class="button view-done-hide disabled inputoutput-true-hide" id="bt_start_off" disabled>
-		    <span class="label normal">Start</span>
-		</button>
-		<button class="button highlight view-done-hide js-actor input-false-hide output-false-hide" id="bt_start_on"
-		    data-target="app" data-key="view" data-value="done">
-		    <span class="label normal">Start</span>
-		</button>
-		<button class="button view-home-hide view-date-hide view-action-hide js-actor"
-		    data-target="app" data-key="view" data-value="home">
-		    <span class="label done">Done</span>
-		</button>
-	    </div>
-	</nav>
-    </div
+	    </nav>
+	</div>
+    </div>
     
 </body>
 </html>

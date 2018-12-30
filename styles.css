@@ -9,12 +9,27 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 480px;
 }
 
-.app {
-    width: 720px;
-    height: 480px;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+}
+
+.env {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    flex-grow: 1;
+    justify-content: center;
+    
+
+}
+
+#app {
     min-width: 720px;
     min-height: 480px;
     background: #f2f2f2;
@@ -90,13 +105,8 @@ main {
     margin:
 }
 
-.view.home p {
-    display: block;
-    margin: 10px 0 0 0;
-}
-
 .view.home .right {
-    padding-left: 40px;
+    padding-left: 80px;
 }
 
 .view.done {
@@ -154,8 +164,10 @@ nav {
     margin-top: 20px;
 }
 
-.button + .button {
-    margin-left: 20px;
+.flex-row {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
 }
 
 .button {
@@ -171,6 +183,10 @@ nav {
     color: #1a1a1a;
     text-align: center;
     min-width: 80px;
+}
+
+.button + .button {
+    margin-left: 20px;
 }
 
 .button:not([disabled]):hover {
@@ -199,19 +215,20 @@ nav {
 .button-file {
     background: #fff;
     text-align: left;
+    display: flex;
 }
 
 .button-file::after {
     content: "⯆";
     font-size: 16px;
-    padding: 10px 0 8px 12px;
+    padding: 0 0 0 12px;
     margin-left: 10px;
     border-left: 1px solid #f2f2f2;
 }
 
 .button-file .label {
     display: inline-block;
-    width: 170px;
+    flex-grow: 1;
 }
 
 .button-file .label.empty {
@@ -223,6 +240,7 @@ nav {
     background: white;
     text-align: left;
     box-shadow: 0 2px rgba(0,0,0,0.1);
+    flex-grow: 1;
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
@@ -238,8 +256,8 @@ nav {
 }
 
 .options p {
-    margin-top: 20px;
     line-height: 30px; 
+    margin: 15px 0;
 }
 
 .options input[type=radio],
@@ -282,15 +300,15 @@ nav {
 #app[data-view=date] .view-date-hide,
 #app[data-view=action] .view-action-hide,
 #app[data-view=done] .view-done-hide,
-#phockup[data-link=true] ~ #app .copy-false-hide,
-#phockup[data-move=true] ~ #app .copy-false-hide,
-#phockup[data-move=false] ~ #app .move-false-hide,
-#phockup[data-link=false] ~ #app .link-false-hide,
-#phockup:not([data-input=""]) ~ #app .input-true-hide,
-#phockup[data-input=""] ~ #app .input-false-hide,
-#phockup:not([data-output=""]) ~ #app .output-true-hide,
-#phockup[data-output=""] ~ #app .output-false-hide,
-#phockup:not([data-input=""]):not([data-output=""]) ~ #app .inputoutput-true-hide{
+#phockup[data-link=true] ~ .env #app .copy-false-hide,
+#phockup[data-move=true] ~ .env #app .copy-false-hide,
+#phockup[data-move=false] ~ .env #app .move-false-hide,
+#phockup[data-link=false] ~ .env #app .link-false-hide,
+#phockup:not([data-input=""]) ~ .env #app .input-true-hide,
+#phockup[data-input=""] ~ .env #app .input-false-hide,
+#phockup:not([data-output=""]) ~ .env #app .output-true-hide,
+#phockup[data-output=""] ~ .env #app .output-false-hide,
+#phockup:not([data-input=""]):not([data-output=""]) ~ .env #app .inputoutput-true-hide{
     display: none
 }
 
@@ -302,11 +320,8 @@ nav {
 
 
 #phockup {
+    order: 2;
     font-size: 16px;
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
     margin: 10px;
     background: black;
     color: white;
