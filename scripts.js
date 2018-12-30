@@ -171,7 +171,7 @@ function update_output() {
 	}
 	
 	//Text inputs
-	var keys = ["date", "regex", "date_fields"];
+	var keys = ["date", "regex"];
 	for (var i in keys) {
 	    key = keys[i];
 	    value = phockup[key];
@@ -191,7 +191,7 @@ function update_output() {
 	}
 	
 	//Correct order
-	var order = ["input", "output", "date", "move", "link", "original_names", "regex", "timestamp", "date_fields"];
+	var order = ["input", "output", "date", "move", "link", "original_names", "regex", "timestamp"];
 	command.push("phockup");
 	for (var i in order) {
 	    key = order[i];
