@@ -207,7 +207,8 @@ nav {
 }
 
 .button-arrow::before {
-    content: "\2bc6";
+    font-family: monospace;
+    content: "\25BC";
     font-size: 1em;
     padding-right: 12px;
 }
